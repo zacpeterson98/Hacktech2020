@@ -1,6 +1,6 @@
 package Item;
 
-public class NonPerishable implements Type {
+public class NonPerishable extends Type {
     @Override
     public int returnType() {
         return 0;

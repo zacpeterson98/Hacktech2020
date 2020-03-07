@@ -1,5 +1,5 @@
 package Item;
 
-public interface Type {
-    public int returnType();
+public abstract class Type {
+    public abstract int returnType();
 }
