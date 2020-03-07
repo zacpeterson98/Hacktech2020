@@ -1,8 +1,9 @@
 import Item.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Profile {
+public class Profile implements Serializable {
     private String name;
     private ArrayList<Item> ingredients;
     private ArrayList<Item> allergens;
