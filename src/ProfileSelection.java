@@ -21,6 +21,10 @@ public class ProfileSelection {
         Profile newProfile = new Profile(name);
         profiles.add(newProfile);
         activeprofile = newProfile;
+
+        for (int i = 0; i < 3; ++i){
+            newProfile.addIngredient();
+        }
     }
 
     public void setActiveprofile(Profile activeprofile) {
@@ -38,6 +42,12 @@ public class ProfileSelection {
     @Override
     public String toString() {
         return "Active profile: " + activeprofile.getName();
+    }
+
+    public void printAllProfiles(){
+        for (Profile i: profiles){
+            System.out.println(i.toString());
+        }
     }
 
 //    public void saveProfiles(){
