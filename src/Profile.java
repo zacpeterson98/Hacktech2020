@@ -39,13 +39,14 @@ public class Profile implements Serializable {
     public void addIngredient(){
         Scanner input = new Scanner(System.in);
         System.out.print("Ingredient name: ");
-        String name = input.nextLine();
+        String name = input.next();
 
         System.out.print("Quantity: ");
         int quantity = input.nextInt();
 
+        System.out.flush();
         System.out.print("Unit of Measurement: ");
-        String unit = input.nextLine();
+        String unit = input.next();
 
         typeMenu();
         System.out.print("Select one: ");
@@ -72,9 +73,9 @@ public class Profile implements Serializable {
     }
 
     private void typeMenu(){
-        System.out.print("1. Perishable");
-        System.out.print("2. Non-perishable");
-        System.out.print("3. Seasoning");
+        System.out.println("1. Perishable");
+        System.out.println("2. Non-perishable");
+        System.out.println("3. Seasoning");
     }
 
     @Override

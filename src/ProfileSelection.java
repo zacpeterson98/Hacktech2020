@@ -22,9 +22,10 @@ public class ProfileSelection {
         profiles.add(newProfile);
         activeprofile = newProfile;
 
-        for (int i = 0; i < 3; ++i){
-            newProfile.addIngredient();
-        }
+        // Testing only, delete in final
+//        for (int i = 0; i < 3; ++i){
+//            newProfile.addIngredient();
+//        }
     }
 
     public void setActiveprofile(Profile activeprofile) {
