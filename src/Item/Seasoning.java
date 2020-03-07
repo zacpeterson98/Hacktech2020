@@ -13,6 +13,6 @@ public class Seasoning implements Type {
 
     @Override
     public String toString() {
-        return "Item.Seasoning";
+        return "Seasoning";
     }
 }

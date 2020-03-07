@@ -61,4 +61,11 @@ public class Item {
     public void changeQuantityAndUnits(int quantity, String unit){
 
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "\n" +
+                "Quantity: " + quantity + unit + "\n" +
+                "Type: " + type.toString() + "\n";
+    }
 }

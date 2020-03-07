@@ -12,6 +12,6 @@ public class NonPerishable implements Type {
 
     @Override
     public String toString() {
-        return "Non-Item.Perishable";
+        return "Non-Perishable";
     }
 }

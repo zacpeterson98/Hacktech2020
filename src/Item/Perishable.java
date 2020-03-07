@@ -12,6 +12,6 @@ public class Perishable implements Type {
 
     @Override
     public String toString() {
-        return "Item.Perishable";
+        return "Perishable";
     }
 }
