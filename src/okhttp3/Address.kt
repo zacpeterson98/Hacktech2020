@@ -15,6 +15,14 @@
  */
 package okhttp3
 
+import com.spoonacular.client.*;
+import com.spoonacular.client.auth.*;
+import com.spoonacular.client.model.*;
+import com.spoonacular.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
 import java.net.Proxy
 import java.net.ProxySelector
 import java.util.Objects
