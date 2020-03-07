@@ -1,6 +1,6 @@
 package Item;
 
-public class Seasoning implements Type {
+public class Seasoning extends Type {
 
     @Override
     public int returnType() {

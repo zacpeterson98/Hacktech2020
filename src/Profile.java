@@ -1,7 +1,8 @@
-import Item.Item;
+import Item.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Profile implements Serializable {
     private String name;
@@ -33,6 +34,47 @@ public class Profile implements Serializable {
 
     public ArrayList<Item> getAllergens() {
         return allergens;
+    }
+
+    public void addIngredient(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Ingredient name: ");
+        String name = input.nextLine();
+
+        System.out.print("Quantity: ");
+        int quantity = input.nextInt();
+
+        System.out.print("Unit of Measurement: ");
+        String unit = input.nextLine();
+
+        typeMenu();
+        System.out.print("Select one: ");
+        int selection = input.nextInt();
+
+        switch (selection){
+            case 1:
+                ingredients.add(new Item(name, quantity, unit, new Perishable()));
+                break;
+            case 2:
+                ingredients.add(new Item(name, quantity, unit, new NonPerishable()));
+                break;
+            case 3:
+                ingredients.add(new Item(name, quantity, unit, new Seasoning()));
+                break;
+        }
+    }
+
+    public void addAllergen(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Allergen name: ");
+        String name = input.nextLine();
+        allergens.add(new Item(name));
+    }
+
+    private void typeMenu(){
+        System.out.print("1. Perishable");
+        System.out.print("2. Non-perishable");
+        System.out.print("3. Seasoning");
     }
 
     @Override
