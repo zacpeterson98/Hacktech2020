@@ -23,17 +23,21 @@ public class Parser {
             "ByIngredients?number=5&ranking=1&ingredients=";
 
 
-    public static String getAllergen(String allergen, String ingredients) throws ApiException {
+    public static void getRecipes(String[] ingredients) {
         BigDecimal number = BigDecimal.ONE;
         boolean limitLicense = true;
         BigDecimal ranking = BigDecimal.ONE;
         boolean ignorePantry = false;
-        String ingredientsString = ;
 
-        Object response = api.searchRecipesByIngredients(ingredients, number, limitLicense, ranking, ignorePantry);
-        
-
-        return response;
+        for(int i = 0; i < ingredients.length; ++i) {
+            Object response = null;
+            try {
+                response = api.searchRecipesByIngredients(ingredients[i], number, limitLicense, ranking, ignorePantry);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+            System.out.println(response);
+        }
     }
 
 
