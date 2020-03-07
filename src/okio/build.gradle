@@ -1,0 +1,92 @@
+apply plugin: 'org.jetbrains.kotlin.multiplatform'
+
+kotlin {
+  jvm {
+    withJava()
+  }
+  js {
+    configure([compilations.main, compilations.test]) {
+      tasks.getByName(compileKotlinTaskName).kotlinOptions {
+        moduleKind = "umd"
+        sourceMap = true
+        metaInfo = true
+      }
+    }
+    nodejs {
+      testTask {
+        useMocha {
+          timeout = "30s"
+        }
+      }
+    }
+  }
+  iosX64()
+  iosArm64()
+  // Required to generate tests tasks: https://youtrack.jetbrains.com/issue/KT-26547
+  linuxX64()
+  macosX64()
+  sourceSets {
+    commonMain {
+      dependencies {
+        api deps.kotlin.stdLib.common
+      }
+    }
+    commonTest {
+      dependencies {
+        implementation deps.kotlin.test.common
+        implementation deps.kotlin.test.annotations
+      }
+    }
+    jvmMain {
+      dependencies {
+        api deps.kotlin.stdLib.jdk6
+        compileOnly deps.animalSniffer.annotations
+      }
+    }
+    jvmTest {
+      dependencies {
+        implementation deps.test.junit
+        implementation deps.test.assertj
+        implementation deps.kotlin.test.jdk
+      }
+    }
+    jsMain {
+      dependencies {
+        api deps.kotlin.stdLib.js
+      }
+    }
+    jsTest {
+      dependencies {
+        implementation deps.kotlin.test.js
+      }
+    }
+    nativeMain {
+      dependsOn commonMain
+    }
+    nativeTest {
+      dependsOn commonTest
+    }
+    appleMain {
+      dependsOn commonMain
+    }
+    appleTest {
+      dependsOn commonTest
+    }
+
+    configure([iosX64Main, iosArm64Main, linuxX64Main, macosX64Main]) {
+      dependsOn nativeMain
+    }
+    configure([iosX64Test, iosArm64Test, linuxX64Test, macosX64Test]) {
+      dependsOn nativeTest
+    }
+    configure([iosX64Main, iosArm64Main, macosX64Main]) {
+      dependsOn appleMain
+    }
+    configure([iosX64Test, iosArm64Test, macosX64Test]) {
+      dependsOn appleTest
+    }
+  }
+}
+
+apply from: 'jvm/jvm.gradle'
+apply from: "$rootDir/gradle/gradle-mvn-mpp-push.gradle"
